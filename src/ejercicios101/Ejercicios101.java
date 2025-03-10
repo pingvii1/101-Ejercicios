@@ -22,7 +22,8 @@ public class Ejercicios101 {
         do {
             System.out.println("\n--- 101 Ejercicios ---");
             System.out.println("1. FizzBuzz");
-            System.out.println("2. Sucesion de Fibonacci");
+            System.out.println("2. Anagrama");
+            System.out.println("3. Sucesion de Fibonacci");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opcion: ");
             opcionMain = sc.nextInt();
@@ -32,6 +33,9 @@ public class Ejercicios101 {
                     fizzBuzz();
                     break;
                 case 2:
+                    anagrama();
+                    break;
+                case 3:
                     fibonacci();
                     break;
                 case 0:
@@ -66,6 +70,53 @@ public class Ejercicios101 {
                 System.out.println(i);
             }
         }
+    }
+
+    /*
+ * Escribe una función que reciba dos palabras (String) y retorne
+ * verdadero o falso (Bool) según sean o no anagramas.
+ * - Un Anagrama consiste en formar una palabra reordenando TODAS
+ *   las letras de otra palabra inicial.
+ * - NO hace falta comprobar que ambas palabras existan.
+ * - Dos palabras exactamente iguales no son anagrama.
+     */
+    public static void anagrama() {
+        String palabra1;
+        String palabra2;
+        char letra;
+        int index = 0;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese la primera palabra: ");
+        palabra1 = sc.nextLine().toLowerCase();
+
+        System.out.print("Ingrese la segunda palabra: ");
+        palabra2 = sc.nextLine().toLowerCase();
+
+        if (palabra1.equals(palabra2)) {
+
+            System.out.println("Las palabras NO son anagramas. ");
+            sc.close();
+            return;
+        }
+
+        if (palabra1.length() != palabra2.length()) {
+
+            System.out.println("Las palabras NO son anagramas. ");
+            sc.close();
+            return;
+
+        }
+        for (int i = 0; i < palabra1.length(); i++) {
+            letra = palabra1.charAt(i);
+            index = palabra2.indexOf(letra);
+        }
+        if (index == -1) {
+            System.out.println("Las palabras NO son anagramas");
+            return;
+        }
+        palabra2 = palabra2.substring(0, index) + palabra2.substring(index + 1);
+        System.out.println("Las palabras son anagramas");
     }
 
     /*
