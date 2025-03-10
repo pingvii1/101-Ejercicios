@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package ejercicios101;
 
 import java.util.Scanner;
@@ -12,9 +8,6 @@ import java.util.Scanner;
  */
 public class Ejercicios101 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcionMain;
@@ -24,6 +17,7 @@ public class Ejercicios101 {
             System.out.println("1. FizzBuzz");
             System.out.println("2. Anagrama");
             System.out.println("3. Sucesion de Fibonacci");
+            System.out.println("4. Numero Primo");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opcion: ");
             opcionMain = sc.nextInt();
@@ -37,6 +31,9 @@ public class Ejercicios101 {
                     break;
                 case 3:
                     fibonacci();
+                    break;
+                case 4:
+                    primo();
                     break;
                 case 0:
                     System.out.println("Saliendo del programa...");
@@ -148,5 +145,40 @@ public class Ejercicios101 {
         }
 
         System.out.println();
+    }
+
+    /*
+ * Escribe un programa que se encargue de comprobar si un número es o no primo.
+ * Hecho esto, imprime los números primos entre 1 y 100.
+ * Un numero es primo cuando es divisible por 1 y por si mismo
+ * Ejemplo: 2,3,5,7,etc.
+     */
+    public static void primo() {
+
+        int num;
+        boolean primo = true;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese un numero a comprobar: ");
+        num = sc.nextInt();
+
+        if (num <= 0) {
+            System.out.println("Ingrese un numero mayor a 0");
+            return;
+        }
+
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) {
+                primo = false;
+                break;
+            }
+        }
+
+        if (primo) {
+            System.out.println("Es primo");
+        } else {
+            System.out.println("No es primo");
+        }
+
     }
 }
